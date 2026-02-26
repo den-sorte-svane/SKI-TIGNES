@@ -6,18 +6,20 @@
     <title>Gay Ski Week Tignes 2026 | 25-29 mars</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --pride-red: #e40303;
-            --pride-orange: #ff8c00;
-            --pride-yellow: #ffed00;
-            --pride-green: #008026;
-            --pride-blue: #24408e;
-            --pride-purple: #732982;
-            --snow-white: #f8f9fa;
-            --deep-purple: #1a0b2e;
-            --sky-blue: #00d4ff;
+            --pride-red: #ff0055;
+            --pride-orange: #ff6b35;
+            --pride-yellow: #ffd700;
+            --pride-green: #00ff88;
+            --pride-blue: #0099ff;
+            --pride-purple: #cc00ff;
+            --neon-pink: #ff006e;
+            --neon-cyan: #00f5ff;
+            --neon-purple: #bf00ff;
+            --deep-purple: #0a0015;
+            --disco-gold: #ffd700;
         }
 
         * {
@@ -27,11 +29,43 @@
         }
 
         body {
-            font-family: 'DM Sans', sans-serif;
-            background: linear-gradient(135deg, #1a0b2e 0%, #16213e 50%, #0f3460 100%);
+            font-family: 'Inter', sans-serif;
+            background: #0a0015;
             min-height: 100vh;
             color: #fff;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated gradient background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 0, 110, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(0, 245, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(191, 0, 255, 0.1) 0%, transparent 60%);
+            animation: gradientShift 15s ease infinite;
+            z-index: 0;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { 
+                background: 
+                    radial-gradient(circle at 20% 30%, rgba(255, 0, 110, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 70%, rgba(0, 245, 255, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 50% 50%, rgba(191, 0, 255, 0.1) 0%, transparent 60%);
+            }
+            50% { 
+                background: 
+                    radial-gradient(circle at 70% 60%, rgba(255, 0, 110, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 30% 40%, rgba(0, 245, 255, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 50% 80%, rgba(191, 0, 255, 0.1) 0%, transparent 60%);
+            }
         }
 
         /* Snøfall animasjon */
@@ -65,39 +99,69 @@
             padding: 20px;
         }
 
-        /* Header med dramatisk gradient */
+        /* Neon Pride Hero */
         .hero {
             background: linear-gradient(135deg, 
-                var(--pride-red) 0%, 
-                var(--pride-orange) 20%, 
-                var(--pride-yellow) 40%,
-                var(--pride-green) 60%,
-                var(--pride-blue) 80%,
-                var(--pride-purple) 100%);
-            padding: 80px 40px;
+                #1a0025 0%,
+                #2a0040 50%,
+                #1a0025 100%);
+            padding: 100px 40px;
             text-align: center;
-            border-radius: 30px;
+            border-radius: 40px;
             margin-bottom: 40px;
-            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5);
+            box-shadow: 
+                0 0 60px rgba(255, 0, 110, 0.3),
+                0 0 120px rgba(0, 245, 255, 0.2),
+                0 30px 90px rgba(0, 0, 0, 0.6);
             position: relative;
             overflow: hidden;
+            border: 2px solid transparent;
+            background-clip: padding-box;
         }
 
         .hero::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                var(--pride-red), 
+                var(--pride-orange), 
+                var(--pride-yellow),
+                var(--pride-green),
+                var(--pride-blue),
+                var(--pride-purple),
+                var(--pride-red));
+            border-radius: 40px;
+            z-index: -1;
+            animation: rainbowRotate 4s linear infinite;
+            background-size: 300% 300%;
+        }
+
+        @keyframes rainbowRotate {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-            animation: shimmer 8s ease-in-out infinite;
+            background: 
+                radial-gradient(circle at 30% 50%, rgba(255, 0, 110, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(0, 245, 255, 0.2) 0%, transparent 50%);
+            animation: shimmer 6s ease-in-out infinite;
         }
 
         @keyframes shimmer {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
 
         .hero-content {
@@ -106,12 +170,29 @@
         }
 
         h1 {
-            font-family: 'Righteous', cursive;
-            font-size: clamp(2.5em, 8vw, 5em);
-            text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(2.5em, 8vw, 5.5em);
+            background: linear-gradient(135deg, 
+                var(--neon-cyan), 
+                var(--neon-pink), 
+                var(--neon-purple),
+                var(--neon-cyan));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 20px;
-            letter-spacing: 2px;
-            animation: slideDown 0.8s ease-out;
+            letter-spacing: 3px;
+            animation: slideDown 0.8s ease-out, neonFlow 3s ease infinite;
+            text-shadow: 
+                0 0 20px rgba(255, 0, 110, 0.5),
+                0 0 40px rgba(0, 245, 255, 0.3);
+            filter: drop-shadow(0 0 30px rgba(255, 0, 110, 0.6));
+        }
+
+        @keyframes neonFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         @keyframes slideDown {
@@ -126,14 +207,31 @@
         }
 
         .hero-date {
-            font-size: clamp(1.2em, 3vw, 1.8em);
-            font-weight: 700;
-            background: rgba(0, 0, 0, 0.3);
+            font-size: clamp(1.2em, 3vw, 2em);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
             display: inline-block;
-            padding: 15px 40px;
+            padding: 20px 50px;
             border-radius: 50px;
-            margin-top: 10px;
-            animation: fadeIn 1s ease-out 0.3s backwards;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-out 0.3s backwards, pulse 2s ease-in-out infinite;
+            box-shadow: 
+                0 0 30px rgba(255, 0, 110, 0.6),
+                0 10px 40px rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 30px rgba(255, 0, 110, 0.6),
+                    0 10px 40px rgba(0, 0, 0, 0.4);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 50px rgba(255, 0, 110, 0.9),
+                    0 10px 60px rgba(0, 0, 0, 0.6);
+            }
         }
 
         @keyframes fadeIn {
@@ -141,35 +239,40 @@
             to { opacity: 1; }
         }
 
-        /* Tab navigasjon */
+        /* Neon Tab navigasjon */
         .tabs-wrapper {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 10px;
+            background: rgba(20, 0, 40, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 15px;
             margin-bottom: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 
+                0 0 30px rgba(191, 0, 255, 0.3),
+                0 10px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(191, 0, 255, 0.3);
         }
 
         .tabs {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 10px;
+            gap: 12px;
         }
 
         .tab {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid transparent;
-            padding: 20px 15px;
+            background: rgba(30, 0, 60, 0.5);
+            border: 2px solid rgba(191, 0, 255, 0.3);
+            padding: 22px 15px;
             text-align: center;
             cursor: pointer;
             font-size: 1em;
-            font-weight: 700;
+            font-weight: 900;
             color: rgba(255, 255, 255, 0.7);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 15px;
+            border-radius: 18px;
             position: relative;
             overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .tab::before {
@@ -179,7 +282,10 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 0, 110, 0.3), 
+                transparent);
             transition: left 0.5s;
         }
 
@@ -188,16 +294,24 @@
         }
 
         .tab:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(50, 0, 100, 0.7);
             color: white;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            border-color: var(--neon-pink);
+            box-shadow: 
+                0 0 20px rgba(255, 0, 110, 0.5),
+                0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .tab.active {
-            background: linear-gradient(135deg, var(--sky-blue) 0%, #0066ff 100%);
+            background: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-purple) 100%);
             color: white;
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+            border-color: var(--neon-cyan);
+            box-shadow: 
+                0 0 30px rgba(255, 0, 110, 0.8),
+                0 0 60px rgba(191, 0, 255, 0.4),
+                0 10px 40px rgba(0, 0, 0, 0.4);
+            transform: translateY(-2px);
         }
 
         /* Content områder */
@@ -227,124 +341,172 @@
         }
 
         .section-title {
-            font-family: 'Righteous', cursive;
-            font-size: clamp(2em, 5vw, 3em);
-            background: linear-gradient(135deg, var(--sky-blue), #fff);
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(2em, 5vw, 3.5em);
+            background: linear-gradient(135deg, 
+                var(--neon-cyan), 
+                var(--neon-pink), 
+                var(--neon-purple));
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 40px;
+            animation: neonFlow 3s ease infinite;
+            filter: drop-shadow(0 0 20px rgba(255, 0, 110, 0.5));
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        /* Event dag-kort */
+        /* Event dag-kort med neon */
         .event-day {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(114, 75, 130, 0.1) 100%);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 35px;
+            background: linear-gradient(135deg, 
+                rgba(30, 0, 60, 0.8) 0%, 
+                rgba(50, 0, 100, 0.6) 100%);
+            border: 2px solid rgba(191, 0, 255, 0.4);
+            border-radius: 25px;
+            padding: 40px;
             margin-bottom: 35px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.4s;
+            box-shadow: 
+                0 0 30px rgba(191, 0, 255, 0.2),
+                0 10px 40px rgba(0, 0, 0, 0.4);
         }
 
         .event-day:hover {
-            transform: translateX(5px);
-            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.2);
+            transform: translateX(8px);
+            border-color: var(--neon-pink);
+            box-shadow: 
+                0 0 50px rgba(255, 0, 110, 0.4),
+                0 0 80px rgba(191, 0, 255, 0.3),
+                0 15px 60px rgba(0, 0, 0, 0.5);
         }
 
         .event-day h2 {
-            font-family: 'Righteous', cursive;
-            font-size: 2.2em;
-            margin-bottom: 25px;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2.5em;
+            margin-bottom: 30px;
             background: linear-gradient(90deg, 
-                var(--pride-red), 
-                var(--pride-orange), 
-                var(--pride-yellow),
-                var(--pride-green),
-                var(--pride-blue),
-                var(--pride-purple));
+                var(--neon-pink), 
+                var(--disco-gold), 
+                var(--neon-cyan),
+                var(--neon-purple));
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: rainbowShift 5s ease infinite;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            filter: drop-shadow(0 0 15px rgba(255, 0, 110, 0.4));
+        }
+
+        @keyframes rainbowShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .event-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-left: 5px solid var(--sky-blue);
-            border-radius: 12px;
-            padding: 25px;
+            background: rgba(20, 0, 40, 0.6);
+            border-left: 5px solid var(--neon-pink);
+            border-radius: 15px;
+            padding: 28px;
             margin-bottom: 20px;
             transition: all 0.3s;
+            backdrop-filter: blur(10px);
         }
 
         .event-item:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(40, 0, 80, 0.8);
             border-left-width: 8px;
-            transform: translateX(5px);
+            border-left-color: var(--neon-cyan);
+            transform: translateX(8px);
+            box-shadow: 
+                0 0 25px rgba(0, 245, 255, 0.3),
+                0 5px 20px rgba(0, 0, 0, 0.3);
         }
 
         .event-time {
-            font-weight: 700;
-            color: var(--sky-blue);
-            font-size: 1.2em;
-            margin-bottom: 8px;
+            font-weight: 900;
+            color: var(--neon-cyan);
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+            letter-spacing: 1px;
         }
 
         .event-name {
-            font-size: 1.4em;
-            font-weight: 700;
-            margin-bottom: 8px;
+            font-size: 1.5em;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .event-location {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.8);
             font-style: italic;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            font-size: 1.05em;
         }
 
         .event-pass {
             display: inline-block;
-            padding: 6px 18px;
+            padding: 8px 20px;
             border-radius: 25px;
             font-size: 0.9em;
-            font-weight: 700;
-            margin-top: 10px;
+            font-weight: 900;
+            margin-top: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .event-pass.standard {
-            background: var(--pride-green);
+            background: linear-gradient(135deg, var(--neon-purple), var(--pride-blue));
             color: white;
+            box-shadow: 0 0 15px rgba(191, 0, 255, 0.5);
         }
 
         .event-pass.premium {
-            background: linear-gradient(135deg, #ffd700, #ffed00);
-            color: #1a0b2e;
+            background: linear-gradient(135deg, var(--disco-gold), #ffed00);
+            color: #1a0025;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
         }
 
         .event-pass.free {
-            background: var(--sky-blue);
+            background: linear-gradient(135deg, var(--neon-cyan), var(--pride-green));
             color: white;
+            box-shadow: 0 0 15px rgba(0, 245, 255, 0.5);
         }
 
         .event-description {
-            margin-top: 12px;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.85);
+            margin-top: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
         }
 
-        /* Info-bokser */
+        /* Info-bokser med neon glow */
         .info-box {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 102, 255, 0.2));
-            border: 2px solid var(--sky-blue);
-            border-radius: 15px;
-            padding: 30px;
+            background: linear-gradient(135deg, 
+                rgba(0, 245, 255, 0.15), 
+                rgba(191, 0, 255, 0.15));
+            border: 2px solid var(--neon-cyan);
+            border-radius: 20px;
+            padding: 35px;
             margin-bottom: 30px;
+            box-shadow: 
+                0 0 30px rgba(0, 245, 255, 0.3),
+                0 10px 40px rgba(0, 0, 0, 0.3);
         }
 
         .info-box h3 {
-            font-family: 'Righteous', cursive;
-            font-size: 1.6em;
-            margin-bottom: 15px;
-            color: var(--sky-blue);
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.7em;
+            margin-bottom: 18px;
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 15px rgba(0, 245, 255, 0.6);
         }
 
         .info-box ul {
@@ -353,37 +515,51 @@
         }
 
         .info-box li {
-            padding: 8px 0 8px 30px;
+            padding: 10px 0 10px 35px;
             position: relative;
+            line-height: 1.6;
         }
 
         .info-box li::before {
             content: '▸';
             position: absolute;
             left: 0;
-            color: var(--sky-blue);
-            font-size: 1.3em;
+            color: var(--neon-pink);
+            font-size: 1.4em;
+            text-shadow: 0 0 10px rgba(255, 0, 110, 0.8);
         }
 
-        /* Buss-rute kort */
+        /* Buss-rute kort med neon */
         .bus-route {
-            background: rgba(0, 128, 38, 0.1);
+            background: linear-gradient(135deg, 
+                rgba(0, 255, 136, 0.1), 
+                rgba(0, 128, 38, 0.15));
             border: 2px solid var(--pride-green);
-            border-radius: 15px;
-            padding: 30px;
+            border-radius: 20px;
+            padding: 35px;
             margin-bottom: 25px;
-            transition: transform 0.3s;
+            transition: all 0.4s;
+            box-shadow: 
+                0 0 25px rgba(0, 255, 136, 0.2),
+                0 10px 35px rgba(0, 0, 0, 0.3);
         }
 
         .bus-route:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 128, 38, 0.3);
+            border-color: var(--neon-cyan);
+            box-shadow: 
+                0 0 40px rgba(0, 255, 136, 0.4),
+                0 15px 50px rgba(0, 0, 0, 0.4);
         }
 
         .bus-route h3 {
             color: var(--pride-green);
-            font-size: 1.5em;
-            margin-bottom: 15px;
+            font-size: 1.6em;
+            margin-bottom: 18px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
         }
 
         .bus-info {
@@ -597,6 +773,51 @@
         <div id="program" class="tab-content">
             <h2 class="section-title">Detaljert Program</h2>
 
+            <!-- ONSDAG -->
+            <div class="event-day">
+                <h2>✈️ Onsdag 25. mars – Ankomst</h2>
+                
+                <div class="event-item">
+                    <div class="event-time">13:30 – 19:25</div>
+                    <div class="event-name">Fly Oslo → Lyon</div>
+                    <div class="event-location">📍 OSL → LYS (Lyon Saint-Exupéry)</div>
+                    <span class="event-pass free">Flyreise</span>
+                    <div class="event-description">
+                        Flytid ca. 2 timer 55 minutter. Husk å ta med pass, boardingkort og bekreftelse på leiebil!
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-time">19:25 – 20:30</div>
+                    <div class="event-name">Hent bagasje & leiebil</div>
+                    <div class="event-location">📍 Lyon Saint-Exupéry Flyplass</div>
+                    <span class="event-pass free">Leiebil</span>
+                    <div class="event-description">
+                        Landing kl. 19:25, deretter henting av bagasje og overtakelse av leiebil. Sjekk at bilen har vinterdekk!
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-time">20:30 – 23:30</div>
+                    <div class="event-name">Bilkjøring Lyon → Tignes</div>
+                    <div class="event-location">📍 220 km via A43 og D902</div>
+                    <span class="event-pass free">Transport</span>
+                    <div class="event-description">
+                        Ca. 3 timers kjøring gjennom de franske alpene. Rute: A43 → Albertville → N90 → Moûtiers → D902 → Bourg-Saint-Maurice → Tignes Val Claret. Det blir mørkt, så kjør forsiktig!
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-time">~23:30</div>
+                    <div class="event-name">Ankomst Tignes & Innsjekk</div>
+                    <div class="event-location">📍 Résidence Club MMV l'Altaviva, Val Claret</div>
+                    <span class="event-pass free">Hotell</span>
+                    <div class="event-description">
+                        Forventet ankomst sent på kvelden. Sjekk inn på hotellet, pakk ut og forbered deg på en fantastisk uke!
+                    </div>
+                </div>
+            </div>
+
             <!-- TORSDAG -->
             <div class="event-day">
                 <h2>🌈 Torsdag 26. mars</h2>
@@ -722,6 +943,51 @@
                 </div>
             </div>
 
+            <!-- SØNDAG -->
+            <div class="event-day">
+                <h2>✈️ Søndag 29. mars – Hjemreise</h2>
+                
+                <div class="event-item">
+                    <div class="event-time">~10:30</div>
+                    <div class="event-name">Utsjekk & avreise fra Tignes</div>
+                    <div class="event-location">📍 Résidence Club MMV l'Altaviva</div>
+                    <span class="event-pass free">Hotell</span>
+                    <div class="event-description">
+                        Sjekk ut fra hotellet senest kl. 10:30 for å rekke flyet. Pack alt skiutstyret og bagasjen!
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-time">10:30 – 13:30</div>
+                    <div class="event-name">Bilkjøring Tignes → Lyon</div>
+                    <div class="event-location">📍 220 km via D902 og A43</div>
+                    <span class="event-pass free">Transport</span>
+                    <div class="event-description">
+                        Ca. 3 timers kjøring tilbake til Lyon flyplass. Husk å fylle bensin på bilen før dere leverer den!
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-time">13:30 – 14:00</div>
+                    <div class="event-name">Lever leiebil & innsjekk</div>
+                    <div class="event-location">📍 Lyon Saint-Exupéry Flyplass</div>
+                    <span class="event-pass free">Leiebil</span>
+                    <div class="event-description">
+                        Lever leiebilen og sjekk inn for flyet. Husk å være ved gaten i god tid!
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-time">14:40 – 17:10</div>
+                    <div class="event-name">Fly Lyon → Oslo</div>
+                    <div class="event-location">📍 LYS → OSL (Oslo Gardermoen)</div>
+                    <span class="event-pass free">Flyreise</span>
+                    <div class="event-description">
+                        Hjemreise! Flytid ca. 2 timer 30 minutter. Landing i Oslo kl. 17:10. Takk for en fantastisk uke! 🌈
+                    </div>
+                </div>
+            </div>
+
             <div class="info-box" style="margin-top: 40px;">
                 <h3>ℹ️ Viktig informasjon om programmet</h3>
                 <ul>
@@ -821,11 +1087,11 @@
                     </div>
                     <div class="bus-detail">
                         <strong>⏱️ Frekvens</strong>
-                        Hvert 10-15 min
+                        Dag: hvert 10-15 min<br>Natt: hvert 20-30 min
                     </div>
                 </div>
                 <div class="event-description">
-                    Dette er hovedruten som forbinder de tre hovedområdene i Tignes. Perfekt for å komme seg mellom hotellet og festlokalene!
+                    Dette er hovedruten som forbinder de tre hovedområdene i Tignes. Perfekt for å komme seg mellom hotellet og festlokalene! Nattbussene går sjeldnere enn dagbussene, men dekker hele natten.
                 </div>
             </div>
 
@@ -845,9 +1111,13 @@
                         <strong>💰 Pris</strong>
                         GRATIS
                     </div>
+                    <div class="bus-detail">
+                        <strong>⏱️ Frekvens</strong>
+                        Varierer etter tid
+                    </div>
                 </div>
                 <div class="event-description">
-                    Forbindelse til de lavere delene av Tignes-området.
+                    Forbindelse til de lavere delene av Tignes-området. Nattbussene kjører til kl. 02:00.
                 </div>
             </div>
 
@@ -871,6 +1141,18 @@
                 <div class="event-description">
                     Utforsk det fantastiske Espace Killy-området! Val d'Isère er en pittoresk alpelandsby med fantastiske løyper.
                 </div>
+            </div>
+
+            <div class="info-box" style="margin-top: 40px;">
+                <h3>🚶 Transport i Tignes – Tips & Alternativer</h3>
+                <p><strong>Hvordan kommer du deg rundt?</strong></p>
+                <ul>
+                    <li><strong>Shuttlebuss:</strong> Det enkleste alternativet! Gratis busser kjører 24/7 mellom alle områder. På dagtid går bussene hver 10-15 minutt, mens nattbussene går litt sjeldnere (hvert 20-30 min).</li>
+                    <li><strong>Gå over den frosne innsjøen:</strong> På vinteren er innsjøen mellom Tignes Le Lac og Val Claret fullstendig frossen (opptil 90 cm is!). Du kan gå rett over innsjøen – det er en rask, scenisk og unik opplevelse. Perfekt snarvei mellom hotellet og festlokalene!</li>
+                    <li><strong>Gå på ski/alpint:</strong> Ja, du kan faktisk ta på deg skiene og kjøre mellom områdene! Tignes Le Lac og Val Claret er forbundet med preparerte løyper. Hotellet vårt (MMV l'Altaviva) har ski-in/ski-out, så du kan stå på ski hele veien fra Le Lac til døren din.</li>
+                    <li><strong>Taxi:</strong> Taxi er tilgjengelig 24/7 hvis shuttlebussen er full eller du har det travelt. Anbefales å bestille på forhånd. Taxi Tignes: +33 4 79 06 39 42</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>💡 Anbefaling:</strong> Bruk shuttlebussene eller gå over innsjøen for det meste. Det er enkelt, gratis og en del av opplevelsen! Taxi er en god backup hvis du går glipp av siste buss.</p>
             </div>
 
             <h3 style="margin-top: 50px; margin-bottom: 25px; font-size: 1.8em; color: var(--sky-blue);">🎉 Event-shuttlebusser</h3>
